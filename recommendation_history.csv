@@ -1,0 +1,6 @@
+job_title,experience_level,company_size,company_location,salary_in_usd,remote_ratio,recommended_industry,top1,top2,top3,timestamp
+Data Scientist,EX,M,BG,89000,100,Transportation,Transportation (31.0%),Technology (21.0%),Healthcare (12.0%),2025-08-22 16:34:21
+Software Engineer,MI,L,CA,87000,100,Healthcare,Healthcare (26.0%),Manufacturing (21.0%),Transportation (14.0%),2025-08-22 16:39:22
+AI Engineer,Junior,S,US,80000,50,Healthcare,2025-08-22 16:51:27
+Ai,Mid,S,US,80000,50,Healthcare,2025-08-22 16:51:47
+Ml,Mid,S,US,80000,50,Healthcare,2025-08-22 16:52:02

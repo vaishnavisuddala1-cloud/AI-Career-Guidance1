@@ -1,0 +1,61 @@
+# career_recommender.py
+
+import pandas as pd
+import joblib
+
+# ================================
+# 1. Load trained model
+# ================================
+model = joblib.load("models/ai_career_model.pkl")
+
+# IMPORTANT: load training dataset to get the same dummy columns
+job_data = pd.read_csv("data/ai_job_market_insights.csv")
+salary_data = pd.read_csv("data/salaries.csv")
+
+job_data.rename(columns={"Job_Title": "job_title"}, inplace=True)
+df = pd.merge(job_data, salary_data, on="job_title", how="inner")
+df = df.dropna()
+
+# Target
+target_column = "Industry"
+X = df.drop(columns=[target_column])
+X_encoded = pd.get_dummies(X, drop_first=True)
+
+# ================================
+# 2. Take new input (example)
+# ================================
+new_data = {
+    "job_title": "Data Scientist",
+    "Company_Size": "L",
+    "Location": "US",
+    "AI_Adoption_Level": "High",
+    "Automation_Risk": "Low",
+    "Required_Skills": "Python, Machine Learning",
+    "Salary_USD": 120000,
+    "Remote_Friendly": "Yes",
+    "work_year": 2025,
+    "experience_level": "SE",
+    "employment_type": "FT",
+    "salary": 120000,
+    "salary_currency": "USD",
+    "salary_in_usd": 120000,
+    "employee_residence": "US",
+    "remote_ratio": 100,
+    "company_location": "US",
+    "company_size": "L"
+}
+
+# Convert to DataFrame
+input_df = pd.DataFrame([new_data])
+
+# Encode same way as training
+input_encoded = pd.get_dummies(input_df, drop_first=True)
+
+# Align with training features
+input_encoded = input_encoded.reindex(columns=X_encoded.columns, fill_value=0)
+
+# ================================
+# 3. Make Prediction
+# ================================
+prediction = model.predict(input_encoded)[0]
+print("🔮 Predicted Industry/Future Trend:", prediction)
