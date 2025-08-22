@@ -18,6 +18,11 @@ Model Training: Train custom machine learning models for accurate recommendation
 Historical Tracking: Maintain recommendation history for users.
 ------------------------
 Folder Structure 
+
+
+
+
+
 AI-Future-Trends/
 │
 ├── .git/                       # Git repository metadata
@@ -40,6 +45,10 @@ AI-Future-Trends/
 ├── requirements.txt              # Python dependencies list
 ├── top_ai_jobs                   # Script listing top AI jobs
 └── top_research_categories       # Script listing research categories
+
+
+
+
 
 -----------------
 Installation
